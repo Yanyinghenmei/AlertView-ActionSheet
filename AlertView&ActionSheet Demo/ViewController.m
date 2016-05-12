@@ -33,8 +33,7 @@
 
 - (void)sheetBtnClick:(id)sender {
     ZYActionSheet *sheet = [[ZYActionSheet alloc]
-                            initWithSelectedIndex:0 title:@"title:sldjfahgaklsjdfiejfkanbnadjfapnaklsdjfaoewjfkalnglaksjdfoiawenagkansdfjaoiewnwgnajfklanv,zdzvnmioueiohtqno349fajnndvnaerutan"
- 
+                            initWithSelectedIndex:0 title:@"title"
                             buttonTitles:@[@"button1", @"button2", @"button3"]
                             cancelButtonTitle:@"cancel"
                             buttonClickBlock:^(UIButton * _Nullable btn, NSInteger index) {
@@ -45,13 +44,9 @@
 }
 
 - (void)alertBtnClick:(id)sender {
-    SEAlertView *alert = [[SEAlertView alloc] initWithTitle:@"title:sldjfahgaklsjdfiejfkanbnadjfapnaklsdjfaoewjfkalnglaksjdfoiawenagkansdfjaoiewnwgnajfklanv,zdzvnmioueiohtqno349fajnndvnaerutan"
-                cancelButtonTitle:@"cancel"
-                  sureButtonTitle:@"sure"
-                 buttonClickBlock:^(UIButton * _Nullable btn) {
-                     
-        NSLog(@"alert-- %@", btn.titleLabel.text);
-                     
+    
+    SEAlertView *alert = [[SEAlertView alloc] initWithWidth:0 Title:@"title" message:@"this text is message" cancelButtonTitle:@"取消" sureButtonTitle:@"确定" buttonClickBlock:^(UIButton * _Nullable btn) {
+        
     }];
     [alert show];
 }

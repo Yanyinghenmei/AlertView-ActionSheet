@@ -8,16 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define SheetTitleColor [UIColor blackColor]
-#define SheetBtnTitleSlecetedColor [UIColor cyanColor]
-#define SheetBtnTitleNormalColor [UIColor lightGrayColor]
-#define SheetCancelBtnTitleColor [UIColor blackColor] 
-#define SheetLineColor [UIColor lightGrayColor]
-
-#define SheetTitleFont [UIFont systemFontOfSize:18]
-#define SheetBtnFont [UIFont systemFontOfSize:15]
-#define SheetCancelFont [UIFont systemFontOfSize:15]
-
 typedef void(^SheetButtonClickBlock)(UIButton * _Nullable  btn, NSInteger index);
 
 @interface ZYActionSheet : UIView

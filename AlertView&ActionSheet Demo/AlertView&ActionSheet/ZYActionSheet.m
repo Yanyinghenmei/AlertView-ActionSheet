@@ -8,8 +8,15 @@
 
 #import "ZYActionSheet.h"
 
-#define ZYDeviceWidth [UIScreen mainScreen].bounds.size.width
-#define ZYDeviceHeight [UIScreen mainScreen].bounds.size.height
+#define SheetTitleColor [UIColor colorWithRed:51/255.00 green:51/255.00 blue:51/255.00 alpha:1]
+#define SheetBtnTitleSlecetedColor [UIColor colorWithRed:26/255.00 green:167/255.00 blue:239/255.00 alpha:1]
+#define SheetBtnTitleNormalColor [UIColor colorWithRed:119/255.00 green:119/255.00 blue:119/255.00 alpha:1]
+#define SheetCancelBtnTitleColor [UIColor colorWithRed:119/255.00 green:119/255.00 blue:119/255.00 alpha:1]
+#define SheetLineColor [UIColor colorWithRed:241/255.00 green:241/255.00 blue:241/255.00 alpha:1]
+
+#define SheetTitleFont [UIFont systemFontOfSize:18]
+#define SheetBtnFont [UIFont systemFontOfSize:15]
+#define SheetCancelFont [UIFont systemFontOfSize:15]
 
 @interface ZYActionSheet ()
 @property (nonatomic, strong, nullable)UIControl *control;
@@ -32,7 +39,7 @@
     if (self = [super initWithFrame:CGRectZero]) {
         
         buttonClickBlock = block;
-        selfWidth = ZYDeviceWidth - 20;
+        selfWidth = [UIScreen mainScreen].bounds.size.width - 20;
         CGFloat x = 25;
         CGFloat y = 20;
         CGFloat btnH = 40;
@@ -87,7 +94,7 @@
         }
         
         CGFloat selfHeight = self.topView.frame.size.height + 8 +_cancelBtn.frame.size.height + 10;
-        self.frame = CGRectMake(10, ZYDeviceHeight, selfWidth, selfHeight);
+        self.frame = CGRectMake(10, [UIScreen mainScreen].bounds.size.height, selfWidth, selfHeight);
     }
     return self;
 
@@ -145,7 +152,7 @@
     [self.control addSubview:self];
     
     CGRect frame = self.frame;
-    frame.origin.y = ZYDeviceHeight - frame.size.height;
+    frame.origin.y = [UIScreen mainScreen].bounds.size.height - frame.size.height;
 
     [UIView animateWithDuration:.4f animations:^{
         self.frame = frame;
@@ -156,7 +163,7 @@
 - (void)dismiss {
     
     CGRect frame = self.frame;
-    frame.origin.y = ZYDeviceHeight;
+    frame.origin.y = [UIScreen mainScreen].bounds.size.height;
     
     [UIView animateWithDuration:.4f animations:^{
         self.frame = frame;

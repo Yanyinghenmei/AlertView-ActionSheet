@@ -8,24 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^AlertButtonClickBlock)( UIButton * _Nullable btn);
-
-#define AlertTitleColor [UIColor blackColor]
-#define AlertBtnTitleColor [UIColor whiteColor]
-#define AlertBtnBackgroundColor [UIColor cyanColor]
-
-#define AlertTitleFont [UIFont systemFontOfSize:15]
-#define AlertBtnFont [UIFont systemFontOfSize:14]
+typedef void(^ButtonClickBlock)( UIButton * _Nullable btn);
 
 @interface SEAlertView : UIView
 
 - (void)show;
 - (void)dismiss;
 
-- (nullable instancetype)initWithTitle:(nullable NSString *)title
-            cancelButtonTitle:(nullable NSString *)cancelButtonTitle
-              sureButtonTitle:(nullable NSString *)sureButtonTitle
-             buttonClickBlock:(nullable AlertButtonClickBlock)block;
+- (nullable instancetype)initWithWidth:(CGFloat)width
+                                 Title:(nullable NSString *)title
+                               message:(nullable NSString *)message
+                     cancelButtonTitle:(nullable NSString *)cancelButtonTitle
+                       sureButtonTitle:(nullable NSString *)sureButtonTitle
+                      buttonClickBlock:(nullable ButtonClickBlock)block;
 
 @end
 
@@ -34,6 +29,7 @@ typedef void(^AlertButtonClickBlock)( UIButton * _Nullable btn);
  
  ----------------------------
               title
+             message
    cancelButton | sureButton
  ----------------------------
  

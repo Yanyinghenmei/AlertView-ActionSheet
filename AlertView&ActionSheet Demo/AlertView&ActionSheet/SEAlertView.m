@@ -8,11 +8,18 @@
 
 #import "SEAlertView.h"
 
-#define ZYDeviceWidth [UIScreen mainScreen].bounds.size.width
-#define ZYDeviceHeight [UIScreen mainScreen].bounds.size.height
+#define AlertTitleColor [UIColor colorWithRed:51/255.00 green:51/255.00 blue:51/255.00 alpha:1]
+#define AlertMessageColor [UIColor colorWithRed:119/255.00 green:119/255.00 blue:119/255.00 alpha:1]
+#define AlertBtnTextColor [UIColor whiteColor]
+#define AlertBtnBackgroundColor [UIColor colorWithRed:26/255.00 green:167/255.00 blue:239/255.00 alpha:1]
+
+#define AlertTitleFont [UIFont systemFontOfSize:18]
+#define AlertMessageFont [UIFont systemFontOfSize:15]
+#define AlertBtnFont [UIFont systemFontOfSize:16]
 
 @interface SEAlertView ()
 @property (nonatomic, strong, nullable)UILabel *titleLab;
+@property (nonatomic, strong, nullable)UILabel *messageLab;
 @property (nonatomic, strong, nullable)UIButton *cancelButton;
 @property (nonatomic, strong, nullable)UIButton *suerButton;
 @property (nonatomic, strong, nullable)NSMutableArray *otherButtons;
@@ -20,22 +27,24 @@
 @end
 
 @implementation SEAlertView {
-    AlertButtonClickBlock buttonClickBlock;
+    ButtonClickBlock buttonClickBlock;
     CGFloat selfW;
     UIView *line;
 }
 
-- (instancetype)initWithTitle:(NSString *)title
+- (instancetype)initWithWidth:(CGFloat)width
+                        Title:(NSString *)title
+                      message:(NSString *)message
             cancelButtonTitle:(NSString *)cancelButtonTitle
               sureButtonTitle:(NSString *)sureButtonTitle
-             buttonClickBlock:(AlertButtonClickBlock)block {
+             buttonClickBlock:(ButtonClickBlock)block {
     
+    selfW = width?width:[UIScreen mainScreen].bounds.size.width - 150;
     
     if (self = [super initWithFrame:CGRectZero]) {
         
         buttonClickBlock = block;
         
-        selfW = ZYDeviceWidth - 150;
         
         self.backgroundColor = [UIColor whiteColor];
         self.layer.cornerRadius = 15;
@@ -43,8 +52,22 @@
         
         if (title) {
             self.titleLab.text = title;
-            CGSize size = [self.titleLab sizeThatFits:CGSizeMake(selfW - 60, ZYDeviceWidth)];
-            self.titleLab.frame = CGRectMake(30, 30, selfW - 60, size.height);
+            CGSize size = [self.titleLab sizeThatFits:CGSizeMake(selfW - 60, [UIScreen mainScreen].bounds.size.height)];
+            self.titleLab.frame = CGRectMake(30,
+                                             30,
+                                             selfW - 60,
+                                             size.height);
+        }
+        
+        
+        CGFloat gapOfTitleAndMessage = title?15:30;
+        if (message) {
+            self.messageLab.text = message;
+            CGSize size = [self.messageLab sizeThatFits:CGSizeMake(selfW - 60, [UIScreen mainScreen].bounds.size.height)];
+            self.messageLab.frame = CGRectMake(30,
+                                               CGRectGetMaxY(self.titleLab.frame)+gapOfTitleAndMessage,
+                                               selfW - 60,
+                                               size.height);
         }
         
         if (cancelButtonTitle) {
@@ -55,34 +78,57 @@
             _suerButton = [self buttonWithTitle:sureButtonTitle];
         }
         
+        CGFloat gapOfMessageAndBtn = message?30:5;
+        
         if (cancelButtonTitle && sureButtonTitle) {
-            _cancelButton.frame = CGRectMake(0, CGRectGetMaxY(self.titleLab.frame)+30, selfW/2, 40);
-            _suerButton.frame = CGRectMake(CGRectGetMaxX(_cancelButton.frame), CGRectGetMaxY(self.titleLab.frame)+30, selfW/2, 40);
+            _cancelButton.frame = CGRectMake(0,
+                                             CGRectGetMaxY(self.messageLab.frame)+gapOfMessageAndBtn,
+                                             selfW/2,
+                                             40);
             
-            line = [[UIView alloc] initWithFrame:CGRectMake(selfW/2, CGRectGetMinY(_cancelButton.frame)+8, 0.5f, 40-16)];
-            line.backgroundColor = AlertBtnTitleColor;
+            _suerButton.frame = CGRectMake(CGRectGetMaxX(_cancelButton.frame),
+                                           CGRectGetMaxY(self.messageLab.frame)+gapOfMessageAndBtn,
+                                           selfW/2,
+                                           40);
+            
+            line = [[UIView alloc] initWithFrame:CGRectMake(selfW/2,
+                                                            CGRectGetMinY(_cancelButton.frame)+8,
+                                                            0.5f,
+                                                            40-16)];
+            line.backgroundColor = AlertBtnTextColor;
             [self addSubview:line];
         }
         
         if (cancelButtonTitle && !sureButtonTitle) {
-            _cancelButton.frame = CGRectMake(0, CGRectGetMaxY(self.titleLab.frame)+30, selfW, 40);
+            _cancelButton.frame = CGRectMake(0,
+                                             CGRectGetMaxY(self.messageLab.frame)+gapOfTitleAndMessage,
+                                             selfW,
+                                             40);
         }
         
         if (sureButtonTitle && !cancelButtonTitle) {
-            _suerButton.frame = CGRectMake(0, CGRectGetMaxY(self.titleLab.frame)+30, selfW, 40);
+            _suerButton.frame = CGRectMake(0,
+                                           CGRectGetMaxY(self.messageLab.frame)+gapOfTitleAndMessage,
+                                           selfW,
+                                           40);
         }
         
-        self.frame = CGRectMake(0, 0, selfW, self.titleLab.frame.size.height + (cancelButtonTitle?_cancelButton.frame.size.height:_suerButton.frame.size.height) + (title?60:0));
+        CGFloat selfH = CGRectGetMaxY(_cancelButton.frame)?CGRectGetMaxY(_cancelButton.frame):CGRectGetMaxY(_suerButton.frame);
+        self.frame = CGRectMake(0, 0, selfW, selfH);
         
-        if (!title) {
+        if (!title && !message) {
             _cancelButton.center = CGPointMake(_cancelButton.center.x, self.frame.size.height/2);
             _suerButton.center = CGPointMake(_suerButton.center.x, self.frame.size.height/2);
             if (line) {
-                line.frame = CGRectMake(selfW/2, CGRectGetMinY(_cancelButton.frame)+8, 0.5f, 40-16);
+                line.frame = CGRectMake(selfW/2,
+                                        CGRectGetMinY(_cancelButton.frame)+8,
+                                        0.5f,
+                                        40-16);
             }
         }
     }
     return self;
+
 }
 
 - (UILabel *)titleLab {
@@ -96,6 +142,20 @@
         [self addSubview:_titleLab];
     }
     return _titleLab;
+}
+
+- (UILabel *)messageLab {
+    
+    if (!_messageLab) {
+        _messageLab = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleLab.frame)+15, selfW - 60, 0)];
+        _messageLab.numberOfLines = 0;
+        _messageLab.textAlignment = NSTextAlignmentCenter;
+        _messageLab.textColor = AlertMessageColor;
+        _messageLab.font = AlertMessageFont;
+        
+        [self addSubview:_messageLab];
+    }
+    return _messageLab;
 }
 
 - (UIButton *)buttonWithTitle:(NSString *)title {
@@ -113,7 +173,9 @@
 
 - (void)buttonClick:(UIButton *)btn {
     [self dismiss];
-    buttonClickBlock(btn);
+    if (buttonClickBlock) {
+        buttonClickBlock(btn);
+    }
 }
 
 - (void)show {
