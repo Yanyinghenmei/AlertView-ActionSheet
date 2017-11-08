@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		657242321CE464210093E82E /* SEAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 657242311CE464210093E82E /* SEAlertView.m */; };
+		04C728E01FB2FE5700DE7336 /* ZYAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C728DF1FB2FE5700DE7336 /* ZYAlertView.m */; };
 		657CD5CE1CBE30D100A98C2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CD5CD1CBE30D100A98C2D /* main.m */; };
 		657CD5D11CBE30D100A98C2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CD5D01CBE30D100A98C2D /* AppDelegate.m */; };
 		657CD5D41CBE30D100A98C2D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657CD5D31CBE30D100A98C2D /* ViewController.m */; };
@@ -37,8 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		657242301CE464210093E82E /* SEAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEAlertView.h; sourceTree = "<group>"; };
-		657242311CE464210093E82E /* SEAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEAlertView.m; sourceTree = "<group>"; };
+		04C728DE1FB2FE5700DE7336 /* ZYAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYAlertView.h; sourceTree = "<group>"; };
+		04C728DF1FB2FE5700DE7336 /* ZYAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYAlertView.m; sourceTree = "<group>"; };
 		657CD5C91CBE30D100A98C2D /* AlertView&ActionSheet Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlertView&ActionSheet Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		657CD5CD1CBE30D100A98C2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		657CD5CF1CBE30D100A98C2D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -153,9 +153,9 @@
 			children = (
 				657CD60A1CBE327300A98C2D /* ZYActionSheet.h */,
 				657CD60B1CBE327300A98C2D /* ZYActionSheet.m */,
-				657242301CE464210093E82E /* SEAlertView.h */,
-				657242311CE464210093E82E /* SEAlertView.m */,
 				657CD60E1CBE32B300A98C2D /* ZYHeader.h */,
+				04C728DE1FB2FE5700DE7336 /* ZYAlertView.h */,
+				04C728DF1FB2FE5700DE7336 /* ZYAlertView.m */,
 			);
 			path = "AlertView&ActionSheet";
 			sourceTree = "<group>";
@@ -290,8 +290,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				657242321CE464210093E82E /* SEAlertView.m in Sources */,
 				657CD60D1CBE327300A98C2D /* ZYActionSheet.m in Sources */,
+				04C728E01FB2FE5700DE7336 /* ZYAlertView.m in Sources */,
 				657CD5D41CBE30D100A98C2D /* ViewController.m in Sources */,
 				657CD5D11CBE30D100A98C2D /* AppDelegate.m in Sources */,
 				657CD5CE1CBE30D100A98C2D /* main.m in Sources */,

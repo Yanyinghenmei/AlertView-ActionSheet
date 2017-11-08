@@ -10,6 +10,6 @@
 #define ZYHeader_h
 
 #import "ZYActionSheet.h"
-#import "SEAlertView.h"
+#import "ZYAlertView.h"
 
 #endif /* ZYHeader_h */

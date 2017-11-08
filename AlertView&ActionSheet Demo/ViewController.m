@@ -45,7 +45,7 @@
 
 - (void)alertBtnClick:(id)sender {
     
-    SEAlertView *alert = [[SEAlertView alloc] initWithWidth:0 Title:@"title" message:@"this text is message" cancelButtonTitle:@"取消" sureButtonTitle:@"确定" buttonClickBlock:^(UIButton * _Nullable btn) {
+    ZYAlertView *alert = [[ZYAlertView alloc] initWithWidth:0 Title:@"title" message:@"this text is message" cancelButtonTitle:@"取消" sureButtonTitle:@"确定" buttonClickBlock:^(UIButton * _Nullable btn) {
         
     }];
     [alert show];

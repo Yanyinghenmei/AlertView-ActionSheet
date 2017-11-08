@@ -1,12 +1,12 @@
 //
-//  SEAlertView.m
+//  ZYAlertView.m
 //  SpeakEnglish
 //
 //  Created by Daniel on 16/4/12.
 //  Copyright © 2016年 Daniel. All rights reserved.
 //
 
-#import "SEAlertView.h"
+#import "ZYAlertView.h"
 
 #define AlertTitleColor [UIColor colorWithRed:51/255.00 green:51/255.00 blue:51/255.00 alpha:1]
 #define AlertMessageColor [UIColor colorWithRed:119/255.00 green:119/255.00 blue:119/255.00 alpha:1]
@@ -17,7 +17,7 @@
 #define AlertMessageFont [UIFont systemFontOfSize:15]
 #define AlertBtnFont [UIFont systemFontOfSize:16]
 
-@interface SEAlertView ()
+@interface ZYAlertView ()
 @property (nonatomic, strong, nullable)UILabel *titleLab;
 @property (nonatomic, strong, nullable)UILabel *messageLab;
 @property (nonatomic, strong, nullable)UIButton *cancelButton;
@@ -26,7 +26,7 @@
 @property (nonatomic, strong, )UIControl *control;
 @end
 
-@implementation SEAlertView {
+@implementation ZYAlertView {
     ButtonClickBlock buttonClickBlock;
     CGFloat selfW;
     UIView *line;
@@ -128,7 +128,7 @@
         }
     }
     return self;
-
+    
 }
 
 - (UILabel *)titleLab {
@@ -200,3 +200,4 @@
 }
 
 @end
+

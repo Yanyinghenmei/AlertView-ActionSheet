@@ -1,5 +1,5 @@
 //
-//  SEAlertView.h
+//  ZYAlertView.h
 //  SpeakEnglish
 //
 //  Created by Daniel on 16/4/12.
@@ -10,7 +10,7 @@
 
 typedef void(^ButtonClickBlock)( UIButton * _Nullable btn);
 
-@interface SEAlertView : UIView
+@interface ZYAlertView : UIView
 
 - (void)show;
 - (void)dismiss;
@@ -25,12 +25,13 @@ typedef void(^ButtonClickBlock)( UIButton * _Nullable btn);
 @end
 
 /*
-示意图:
+ 示意图:
  
  ----------------------------
-              title
-             message
-   cancelButton | sureButton
+ title
+ message
+ cancelButton | sureButton
  ----------------------------
  
  */
+
