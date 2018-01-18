@@ -23,7 +23,7 @@
 @property (nonatomic, strong, nullable)UIButton *cancelButton;
 @property (nonatomic, strong, nullable)UIButton *suerButton;
 @property (nonatomic, strong, nullable)NSMutableArray *otherButtons;
-@property (nonatomic, strong, )UIControl *control;
+@property (nonatomic, weak)UIControl *control;
 @end
 
 @implementation ZYAlertView {
