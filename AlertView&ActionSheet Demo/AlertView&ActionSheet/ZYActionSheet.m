@@ -19,7 +19,7 @@
 #define SheetCancelFont [UIFont systemFontOfSize:15]
 
 @interface ZYActionSheet ()
-@property (nonatomic, strong, nullable)UIControl *control;
+@property (nonatomic, weak, nullable)UIControl *control;
 @property (nonatomic, strong, nullable)UIView *topView;
 @property (nonatomic, strong, nullable)UILabel *titleLab;
 @property (nonatomic, strong, nullable)UIButton *cancelBtn;
